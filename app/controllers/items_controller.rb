@@ -19,10 +19,19 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    #@item=Item.where(id: params[:id])
+    unless  @item=Item.where(id: params[:id]).first
+        render body: 'Page not found' ,status: 404
+    end
+
   end
 
   def update
+    item=Item.where(id: params[:id]).first
+    if item.update(items_params)
+      redirect_to item_path
+    else
+      render json: item.errors,  status: :unprocessable_entity
+    end
 
   end
 
@@ -33,11 +42,20 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    Item.where(id: params[:id]).first.destroy
+    item = Item.where(id: params[:id]).first.destroy
+    if item.destroyed?
+      redirect_to items_path
+    else
+      render json: item.errors,  status: :unprocessable_entity
+    end
+
   end
 
   private
   def items_params
     params.permit(:name,:price,:real,:weight,:description)
   end
+  # def find_item
+  #   @item = Item.where(id: params[:id]).first
+  # end
 end

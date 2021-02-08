@@ -36,5 +36,7 @@
   <li><%= link_to  e.name, item_path(e)%></li>
   <li><%= e.price %></li>
   <li><%= e.description %></li>
+  <li><%= link_to 'delete', item_path(e) %></li>
+  <li><%= link_to 'edit',edit_item_path(e.id) %></li>
  </ul>
 <% end %>
