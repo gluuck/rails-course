@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   validates :price, numericality:{greater_then: 0, allow_nil: true}
-  validates :name ,:description , presence: true
+  validates :name  , presence: true , uniqueness:  true
 
   after_initialize {p 'initialize'}
   after_save       {p 'save'}
