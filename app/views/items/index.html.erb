@@ -30,10 +30,11 @@
   </tr>
   </tbody>
 </table>-->
-<%# @items.map do |e| %>
-<!--  <ul>-->
-<!--      <li><%#= e.name %></li>-->
-<!--      <li><%#= e.price %></li>-->
-<!--      <li><%#= e.description %></li>-->
-<!--  </ul>-->
-<%# end %>
+<h2 style="color: #B00100;margin: 0 auto">all items</h2>
+<% @items.each do |e| %>
+ <ul>
+  <li><%= link_to  e.name, item_path(e)%></li>
+  <li><%= e.price %></li>
+  <li><%= e.description %></li>
+ </ul>
+<% end %>
