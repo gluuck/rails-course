@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def index
     @items=Item.all
-  
+
   end
 
   def create
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-
+    Item.where(id: params[:id]).first.destroy
   end
 
   private
