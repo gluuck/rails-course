@@ -1,0 +1,11 @@
+<h2 style="color: #B00100;margin: 0 auto">edit <%= @item.name%></h2>
+
+<%= form_tag item_path(@item), method: :put do %>
+  <%= label_tag :name%> <br>
+  <%= text_field_tag :name, @item.name%> <br>
+  <%= label_tag :price%> <br>
+  <%= text_field_tag :price, @item.price %> <br> <br>
+  <%= label_tag :description%> <br>
+  <%= text_field_tag :description, @item.description %> <br> <br>
+  <%= submit_tag "Update",class: "btn btn-primary" %>
+<% end %>
