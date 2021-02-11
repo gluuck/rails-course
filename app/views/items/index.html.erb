@@ -4,12 +4,13 @@
 
 <table class="table table-success table-striped">
     <tr>
-      <th scope="col">Item Id</th>
+      <th scope="col">Id</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col" >Description</th>
+      <th scope="col" >Rating</th>
       <th scope="col">Delete</th>
-      <th></th>
+
     </tr>
 
 <% @items.each do |item| %>
@@ -18,6 +19,7 @@
       <td><%= link_to item.name, item_path(item)%></td>
       <td><%= item.price%></td>
       <td><%= item.description%></td>
+      <td><%= item.votes_count%> <%= link_to '+', upvote_item_path(item)%> </td>
       <td  ><%= button_to 'delete'  , item_path(item), method: :delete, class: "btn btn-danger"%></td>
       </tr>
       <%end%>
