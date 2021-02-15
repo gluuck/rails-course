@@ -1,9 +1,34 @@
 <h2 style="color: #B00100;margin: 0 auto">show item <%= @item.name%></h2>
 
-<ul>
+<!-- <ul>
 <li>Price: <%= @item.price %> $</li>
 <li>Weight: <%= @item.weight %> </li>
 <li>Description: <%= @item.description %> </li>
+<li>Voute: <%= @item.votes_count %> </li>
 <li> <%= button_to "Delete", item_path(@item), method: :delete, class:"btn btn-danger" %></li> <br>
 <li> <%= button_to "Edit", edit_item_path(@item.id),method: :get, class:"btn btn-primary" %></li>
-</ul>
+</ul> -->
+
+
+<table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Weight</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= @item.name %></th>
+      <td><%= @item.price %></td>
+      <td><%= @item.weight %></td>
+      <td><%= @item.description %></td>
+    </tr>
+
+
+  </tbody>
+</table>
+<%= button_to "Delete", item_path(@item), method: :delete, class:"btn btn-danger" %> <br>
+<%= button_to "Edit", edit_item_path(@item.id),method: :get, class:"btn btn-primary" %>
