@@ -1,8 +1,9 @@
 
 
 <h2 style="color: #B00100;margin: 0 auto">All items!</h2>
+<% unless @items.nil?  %>
 
-<table class="table table-success table-striped">
+ <table class="table table-success table-striped">
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Name</th>
@@ -13,17 +14,24 @@
 
     </tr>
 
-<% @items.each do |item| %>
-      <tr>
+ <% @items.each do |item| %>
+    <tr>
       <td><%= item.id %></td>
       <td><%= link_to item.name, item_path(item)%></td>
       <td><%= item.price%></td>
       <td><%= item.description%></td>
       <td><%= item.votes_count%> <%= link_to '+', upvote_item_path(item)%> </td>
       <td  ><%= button_to 'delete'  , item_path(item), method: :delete, class: "btn btn-danger"%></td>
-      </tr>
+
+    </tr>
+
       <%end%>
   </table>
+  <% else %>
+    <h3 style="color: #B00100;margin: 0 auto">No items!</h3>
+
+    <%= button_to "new item", new_item_path,method: :get %>
+<% end %>
+
 
 <br/>
-<%= link_to "new item", new_item_path %>

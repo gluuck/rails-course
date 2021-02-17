@@ -27,7 +27,8 @@
           <a class="nav-link active" aria-current="page" href="/items/expensive">Expensive</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+
+          <%= link_to 'New item',new_item_path, method: :get, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>
