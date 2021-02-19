@@ -59,9 +59,6 @@ class ItemsController < ApplicationController
     @item = Item.where(id: params[:id]).first
     render_404 unless @item
   end
-  def admin?
-    true
-    #render_403 unless params[:admin]
-  end
+  
 
 end
