@@ -10,18 +10,20 @@
       <th scope="col">Price</th>
       <th scope="col" >Description</th>
       <th scope="col" >Rating</th>
+      <th scope="col" >Image</th>
       <th scope="col">Delete</th>
 
     </tr>
 
- <% @items.each do |item| %>
+ <% @items.sort.each do |item| %>
     <tr>
-      <td><%= item.id %></td>
-      <td><%= link_to item.name, item_path(item)%></td>
-      <td><%= item.price%></td>
-      <td><%= 'img' unless  item.description.empty?%></td>
-      <td><%= item.votes_count%> <%= link_to '+', upvote_item_path(item)%> </td>
-      <td  ><%= button_to 'delete'  , item_path(item), method: :delete, class: "btn btn-danger"%></td>
+      <th><%= item.id %></th>
+      <th><%= link_to item.name, item_path(item)%></th>
+      <th><%= item.price%></th>
+      <th><%= 'img' unless  item.description.nil?%></th>
+      <th><%= item.votes_count%> <%= link_to '+', upvote_item_path(item)%> </th>
+      <th><%= !item.image.nil? ? image_tag(item.image.file, width: '30px', height: '30px') :'no img' %></th>
+      <th><%= button_to 'delete'  , item_path(item), method: :delete, class: "btn btn-danger"%></th>
 
     </tr>
 
