@@ -13,8 +13,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item=Item.create(items_params)
-    if item.persisted?
+    @item=Item.create(items_params)
+    if @item.persisted?
       flash[:success] = 'Item added to db'
       redirect_to items_path
     else
@@ -24,7 +24,8 @@ class ItemsController < ApplicationController
   end
   def new
     #flash[:error] = "Enter all field please"
-   end
+    @item = Item.new
+  end
 
   # def edit
   #   render body: 'Page not found' ,status: 404 unless  @item
@@ -42,9 +43,9 @@ class ItemsController < ApplicationController
 
   end
 
-  # def show
+   #def show
   #     render body: 'Page not found' ,status: 404 unless  @item
-  # end
+   #end
   def destroy
     if @item.destroy.destroyed?#(items_params)
       flash[:success] = 'Item was deleted'
@@ -65,7 +66,7 @@ class ItemsController < ApplicationController
 
   private
   def items_params
-    params.permit(:name,:price,:real,:weight,:description)
+    params.require(:item).permit(:name,:price,:real,:weight,:description)
   end
   def find_item
     @item = Item.where(id: params[:id]).first

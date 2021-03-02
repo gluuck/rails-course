@@ -1,12 +1,13 @@
+<div class = "col-sm-12 my-auto">
 <h2 style="color: #B00100;margin: 0 auto">create new_item</h2>
 
 
-<%= form_tag items_path, method: :post do%>
-  <%= label_tag :name%> <br>
-  <%= text_field_tag :name%> <br>
-  <%= label_tag :price%> <br>
-  <%= text_field_tag :price%> <br>
-  <%= label_tag :description%> <br>
-  <%= text_field_tag :description%> <br> <br>
-  <%= submit_tag "Save",class: "btn btn-primary" %> <br> <br>
-<% end %>
+<%= simple_form_for @item do |f|%>
+   <%= f.input :name,  input_html: {class: "form-text"} %>
+   <%= f.input :price, input_html: {class: "form-text"} %> 
+   <%= f.input :description, label: t('item.description'),input_html: {class: "form-text"} %>
+  </br>
+  </br>
+  <%= f.button :submit ,class: "btn btn-primary" %>  
+  <% end %>
+</div>
