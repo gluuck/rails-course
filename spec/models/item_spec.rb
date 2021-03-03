@@ -14,10 +14,11 @@ RSpec.describe Item, type: :model do
     let(:order)  { create (:order )}
      
     it 'calculate the price' do
+      
       order.items << item_1
       order.items << item_2
       
-      expect(order.calculate_total).to  be 30.0
+      expect(order.calculate_total).to  equal (order.items.first[:price] + order.items.second[:price])
     end
   end
   
