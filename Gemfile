@@ -13,9 +13,11 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'haml-rails'
 gem 'simple_form'
+gem 'faker'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
   gem 'pry'
 end
 

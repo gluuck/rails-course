@@ -3,13 +3,8 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy,:upvote]
   before_action :admin? ,    only: [:edit]
   def index
-    @items = Item.all
-    @items = @items.includes(:image)
-    # @items=@items.where('price >=?', params[:price_from]) if params[:price_from]
-    #   @items=@items.where('created_at >=?', 1.day.ago) if params[:today]
-    #   @items=@items.where('votes_count >=?', params[:votes_from]) if params[:votes_from]
-    # @items=@items.order(:id)
-
+    @items = Item.all.includes(:image)
+  
   end
 
   def create
@@ -72,6 +67,6 @@ class ItemsController < ApplicationController
     @item = Item.where(id: params[:id]).first
     render_404 unless @item
   end
-
+  
 
 end
