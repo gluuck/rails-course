@@ -8,3 +8,15 @@
   margin: 4px;
   background: #DADADA;
 }
+.vertical-center{
+  display: inline-flex;
+  align-items: center;
+}
+.deleteAction{
+  
+  cursor: pointer;
+  
+}
+.deleteAction:hover{
+  color: rgb(233, 15, 15);
+}

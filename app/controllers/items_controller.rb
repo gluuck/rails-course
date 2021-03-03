@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
   def destroy
     if @item.destroy.destroyed?#(items_params)
       flash[:success] = 'Item was deleted'
-      redirect_to items_path
+      render json: {success: true}
     else
       flash.now[:error] = "Cant destroy"
       render json: item.errors,  status: :unprocessable_entity
